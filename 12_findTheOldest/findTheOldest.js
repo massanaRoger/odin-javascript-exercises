@@ -1,6 +1,8 @@
 const findTheOldest = function(people) {
-    people.reduce((oldest, obj) => {
-        
+    return people.reduce((oldest, obj) => {
+        if (!obj.yearOfDeath) obj.yearOfDeath = new Date().getFullYear();
+        if ((obj.yearOfDeath - obj.yearOfBirth) > (oldest.yearOfDeath - oldest.yearOfBirth)) return obj;
+        return oldest;
     }, {
         name: "",
         yearOfBirth: 0,
